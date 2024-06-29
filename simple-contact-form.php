@@ -3,7 +3,7 @@
 Plugin Name: Simple Contact Form
 Description: A basic contact form plugin that lets users send messages to the site owner.
 Version: 1.0
-Author: Your Name
+Author: Daksh Makwana
 */
 
 // Exit if accessed directly
