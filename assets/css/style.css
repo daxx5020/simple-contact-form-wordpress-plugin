@@ -1,0 +1,58 @@
+.scf-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scf-form-group {
+    margin-bottom: 15px;
+}
+
+.scf-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.scf-form input[type="text"],
+.scf-form input[type="email"],
+.scf-form textarea {
+    width: 100%;
+    padding: 8px;
+}
+
+.scf-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.scf-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.scf-message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.scf-message-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scf-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 50%;
+}
+
+.scf-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
