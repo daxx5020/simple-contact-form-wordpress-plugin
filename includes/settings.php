@@ -20,6 +20,8 @@ function scf_settings_page_content() {
             submit_button();
             ?>
         </form>
+        
+        <p>To use the form, put this shortcode on your page: <code>[simple_contact_form]</code></p>
     </div>
     <?php
 }
@@ -37,3 +39,4 @@ function scf_recipient_email_callback() {
     $recipient = get_option('scf_recipient_email', get_option('admin_email'));
     echo '<input type="email" name="scf_recipient_email" value="' . esc_attr($recipient) . '">';
 }
+?>
