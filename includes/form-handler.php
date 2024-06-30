@@ -15,6 +15,26 @@ function scf_handle_contact_form_submission() {
         $email = sanitize_email($_POST['email']);
         $message = sanitize_textarea_field($_POST['message']);
 
+        $errors = array();
+
+        if (empty($name)) {
+            $errors[] = 'Name is required.';
+        }
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'A valid email is required.';
+        }
+        if (empty($message)) {
+            $errors[] = 'Message is required.';
+        }
+
+         // If there are validation errors, redirect back with error messages
+         if (!empty($errors)) {
+            $redirect_url = add_query_arg('message', 'error', wp_get_referer());
+            $redirect_url = add_query_arg('errors', urlencode(json_encode($errors)), $redirect_url);
+            wp_safe_redirect($redirect_url);
+            exit;
+        }
+
         $to = get_option('scf_recipient_email', get_option('admin_email'));
         $subject = 'New Contact Form Submission';
         $body = "Name: $name\n";

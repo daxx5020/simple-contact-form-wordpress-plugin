@@ -36,6 +36,13 @@
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 4px;
+    width: 50%;
+}
+
+.error-message-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .scf-message-wrapper{

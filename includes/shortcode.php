@@ -5,15 +5,21 @@ if (!defined('ABSPATH')) {
 }
 
 function scf_display_message() {
-    if (isset($_GET['message'])) {
-        if ($_GET['message'] === 'success') {
-            return '<div class="scf-message-wrapper"><div class="scf-message scf-success">Your message has been sent successfully!</div></div>';
-        } elseif ($_GET['message'] === 'error') {
-            return '<div class="scf-message-wrapper><div class="scf-message scf-error">There was an error sending your message. Please try again later.</div></div>';
+    if (isset($_GET['message']) && $_GET['message'] === 'error') {
+        $errors = isset($_GET['errors']) ? json_decode(stripslashes(urldecode($_GET['errors'])), true) : [];
+        if ($errors && is_array($errors)) {
+            $error_output = '<div class="error-message-container"><div class="scf-message scf-error">';
+            foreach ($errors as $error) {
+                $error_output .= '<div class="scf-error-item">' . esc_html($error) . '</div>';
+            }
+            $error_output .= '</div></div>';
+            return $error_output;
         }
     }
     return '';
 }
+
+
 
 
 function scf_contact_form_shortcode() {
@@ -25,15 +31,15 @@ function scf_contact_form_shortcode() {
         <?php wp_nonce_field('scf_contact_form', 'scf_nonce'); ?>
         <div class="scf-form-group">
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" >
         </div>
         <div class="scf-form-group">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" >
         </div>
         <div class="scf-form-group">
             <label for="message">Message:</label>
-            <textarea name="message" id="message" required></textarea>
+            <textarea name="message" id="message" ></textarea>
         </div>
         <div class="scf-form-group">
             <input type="submit" name="simple_contact_submit" value="Send">
